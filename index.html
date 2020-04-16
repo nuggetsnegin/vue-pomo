@@ -8,13 +8,15 @@
     <div id="app">
       <div class="container">
         <div id="timer">
-          <span id="minutes">25</span><span class="colon">:</span
-          ><span class="seconds">00</span>
+          <span id="minutes">{{ minutes }}</span><span class="colon">:</span
+          ><span class="seconds">{{ seconds }}</span>
         </div>
         <div id="actions">
-          <button id="start">Start</button>
-          <button id="pause">Pause</button>
-          <button id="stop">Stop</button>
+          <button id="start" v-if="!timer" @click="startTimer">Start</button>
+          <button id="stop" v-if="timer" @click="stopTimer">Stop</button>
+          <button id="reset" v-if="resetButton" @click="resetTimer">
+            Reset
+          </button>
         </div>
       </div>
     </div>
