@@ -20,14 +20,21 @@
             ></path>
           </svg>
           <div id="timer">
-            <h1>take breaks negin</h1>
+            <h1>take breaks <span class="accent">(negin)</span></h1>
             <span id="minutes">{{ minutes }}</span><span class="colon">:</span
             ><span class="seconds">{{ seconds }}</span>
           </div>
           <div id="actions">
             <button id="start" v-if="!timer" @click="startTimer">Start</button>
-            <button id="stop" v-if="timer" @click="stopTimer">Pause</button>
-            <button id="reset" v-if="resetButton" @click="resetTimer">
+            <button id="stop" class="pause" v-if="timer" @click="stopTimer">
+              Pause
+            </button>
+            <button
+              id="reset"
+              class="reset"
+              v-if="resetButton"
+              @click="resetTimer"
+            >
               Reset
             </button>
           </div>
@@ -108,6 +115,14 @@
         text-transform: uppercase;
       }
 
+      .accent {
+        position: relative;
+        left: -30px;
+        font-size: 3rem;
+        letter-spacing: -2px;
+        color: #d5c6e0;
+      }
+
       h1 {
         font-size: 4rem;
         letter-spacing: 1.5rem;
@@ -128,11 +143,14 @@
         background: #192a51;
       }
 
-      button:hover,
       button:focus {
         transform: scale(1.2);
         transition: 0.3s ease-in-out;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.08);
+      }
+
+      .reset {
+        margin-left: 50px;
       }
 
       .container {
@@ -181,6 +199,44 @@
         }
         100% {
           transform: scale(2, 1);
+        }
+      }
+
+      @media (max-width: 930px) {
+        .container {
+          width: 700px;
+        }
+      }
+
+      @media (max-width: 750px) {
+        .container {
+          width: 400px;
+        }
+
+        .accent {
+          display: none;
+        }
+
+        .timer {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .container {
+          width: 300px;
+        }
+
+        .accent {
+          display: none;
+        }
+
+        .timer {
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     </style>
