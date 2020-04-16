@@ -1,7 +1,7 @@
 
 # Vue Pomo
 ![Vue Pomo](https://i.imgur.com/Jq9ZROu.png)
-Pomodoro timer made with Vue! Made to practice Vue directives, methods and computed (also all pomodor timers hurt my ears so I added my own stop sound effect. (●'◡'●) )
+Pomodoro timer made with Vue! Made to practice Vue directives, methods and computed (also all pomodoro timers hurt my ears so I added my own stop sound effect. (●'◡'●) )
 
 [Live Link](https://nuggetsnegin.github.io/bubblyBubbles/)
 
