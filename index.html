@@ -7,11 +7,11 @@
   <body>
     <div id="app">
       <div class="container">
-        <div id="pomo-timer">
-          <span id="minutes">{{ minutes }}</span><span class="colon">:</span
-          ><span class="seconds">{{ seconds }}</span>
+        <div id="timer">
+          <span id="minutes">25</span><span class="colon">:</span
+          ><span class="seconds">00</span>
         </div>
-        <div id="pomo-actions">
+        <div id="actions">
           <button id="start">Start</button>
           <button id="pause">Pause</button>
           <button id="stop">Stop</button>
@@ -23,8 +23,32 @@
       var app = new Vue({
         el: '#app',
         data: {
-          minutes: 25,
-          seconds: 00,
+          timer: null,
+          totalTime: 25 * 60, //total time to run the timer in seconds
+          resetButton: false,
+        },
+        methods: {
+          startTimer: function () {
+            this.timer = setInterval(() => this.countdown(), 1000);
+            this.resetButton = true;
+          },
+          stopTimer: function () {
+            clearInterval(this.timer);
+            this.timer = null;
+            this.resetButton = true;
+          },
+          resetTimer: function () {
+            this.totalTime = 25 * 60;
+            clearInterval(this.timer);
+            this.timer = null;
+            this.resetButton = false;
+          },
+          padder: function (time) {
+            return (time < 10 ? '0' : '') + time;
+          },
+          countdown: function () {
+            this.totalTime--;
+          },
         },
       });
     </script>
