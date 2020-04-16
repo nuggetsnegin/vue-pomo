@@ -56,7 +56,16 @@
             }
           },
         },
-        computed: {},
+        computed: {
+          minutes: function () {
+            const minutes = Math.floor(this.totalTime / 60);
+            return this.padder(minutes);
+          },
+          seconds: function () {
+            const seconds = this.totalTime - this.minutes * 60;
+            return this.padder(seconds);
+          },
+        },
       });
     </script>
   </body>
