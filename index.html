@@ -7,16 +7,30 @@
   <body>
     <div id="app">
       <div class="container">
-        <div id="timer">
-          <span id="minutes">{{ minutes }}</span><span class="colon">:</span
-          ><span class="seconds">{{ seconds }}</span>
-        </div>
-        <div id="actions">
-          <button id="start" v-if="!timer" @click="startTimer">Start</button>
-          <button id="stop" v-if="timer" @click="stopTimer">Stop</button>
-          <button id="reset" v-if="resetButton" @click="resetTimer">
-            Reset
-          </button>
+        <div class="wave-container">
+          <svg
+            class="wave"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 100"
+          >
+            <path
+              fill="#00cba9"
+              fill-opacity="0.55"
+              d="M0,64L40,58.7C80,53,160,43,240,37.3C320,32,400,32,480,37.3C560,43,640,53,720,48C800,43,880,21,960,32C1040,43,1120,85,1200,96C1280,107,1360,85,1400,74.7L1440,64L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
+            ></path>
+          </svg>
+          <div id="timer">
+            <h1>Pomomo</h1>
+            <span id="minutes">{{ minutes }}</span><span class="colon">:</span
+            ><span class="seconds">{{ seconds }}</span>
+          </div>
+          <div id="actions">
+            <button id="start" v-if="!timer" @click="startTimer">Start</button>
+            <button id="stop" v-if="timer" @click="stopTimer">Pause</button>
+            <button id="reset" v-if="resetButton" @click="resetTimer">
+              Reset
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -70,5 +84,49 @@
         },
       });
     </script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      body {
+        font-family: 'Valera Round', sans-serif;
+        text-align: center;
+      }
+
+      .container {
+        width: 100%;
+        margin: 10vh auto;
+        max-width: 900px;
+        height: 400px;
+        box-sizing: border-box;
+        border-radius: 40px;
+        background: #f5f8ff;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.08);
+      }
+
+      .wave-container {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .wave {
+        display: block;
+      }
+
+      #timer {
+        position: relative;
+      }
+    </style>
   </body>
 </html>
