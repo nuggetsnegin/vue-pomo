@@ -29,7 +29,7 @@
         },
         methods: {
           startTimer: function () {
-            this.timer = setInterval(() => this.countdown(), 1000);
+            this.timer = setInterval(() => this.countdown(), 1000); //calling countdown and decrements total time every 1sec
             this.resetButton = true;
           },
           stopTimer: function () {
@@ -41,15 +41,22 @@
             this.totalTime = 25 * 60;
             clearInterval(this.timer);
             this.timer = null;
-            this.resetButton = false;
+            this.resetButton = false; //remove reset button
           },
           padder: function (time) {
             return (time < 10 ? '0' : '') + time;
           },
           countdown: function () {
-            this.totalTime--;
+            if (this.totalTime >= 1) {
+              this.totalTime--;
+            } else {
+              //no negatives thx
+              this.totalTime = 0;
+              this.resetTimer();
+            }
           },
         },
+        computed: {},
       });
     </script>
   </body>
