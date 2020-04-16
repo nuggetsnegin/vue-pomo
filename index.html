@@ -6,14 +6,25 @@
   </head>
   <body>
     <div id="app">
-      {{ message }}
+      <div class="container">
+        <div id="pomo-timer">
+          <span id="minutes">{{ minutes }}</span><span class="colon">:</span
+          ><span class="seconds">{{ seconds }}</span>
+        </div>
+        <div id="pomo-actions">
+          <button id="start">Start</button>
+          <button id="pause">Pause</button>
+          <button id="stop">Stop</button>
+        </div>
+      </div>
     </div>
 
     <script>
       var app = new Vue({
         el: '#app',
         data: {
-          message: 'Pomomo',
+          minutes: 25,
+          seconds: 00,
         },
       });
     </script>
